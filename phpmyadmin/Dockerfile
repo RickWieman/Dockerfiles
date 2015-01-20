@@ -1,0 +1,23 @@
+FROM php:5.6-apache
+
+MAINTAINER Rick Wieman <git@rickw.nl>
+
+# Install extensions: gd, mysqli and mbstring
+RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev && rm -rf /var/lib/apt/lists/* \
+ 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
+	&& docker-php-ext-install gd
+RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install mbstring
+
+# Fetch phpMyAdmin
+ENV PMA_VERSION 4.3.7
+
+RUN curl -LS "http://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin/$PMA_VERSION/phpMyAdmin-$PMA_VERSION-english.tar.gz" -o pma.tar.gz \
+	&& tar xzf pma.tar.gz -C /var/www/html --strip-components=1 \
+	&& rm pma.tar.gz
+
+# Add our configuration
+ADD config.inc.php /var/www/html/
+
+# Remove unwanted files/folders
+RUN rm -rf /var/www/html/setup/ /var/www/html/examples/ phpinfo.php
