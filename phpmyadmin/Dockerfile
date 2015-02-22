@@ -10,7 +10,7 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install mbstring
 
 # Fetch phpMyAdmin
-ENV PMA_VERSION 4.3.7
+ENV PMA_VERSION 4.3.10
 
 RUN curl -LS "http://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin/$PMA_VERSION/phpMyAdmin-$PMA_VERSION-english.tar.gz" -o pma.tar.gz \
 	&& tar xzf pma.tar.gz -C /var/www/html --strip-components=1 \
@@ -18,6 +18,7 @@ RUN curl -LS "http://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin/$PMA_V
 
 # Add our configuration
 ADD config.inc.php /var/www/html/
+ADD php-upload_size.ini /usr/local/etc/php/conf.d/php-upload_size.ini
 
 # Remove unwanted files/folders
 RUN rm -rf /var/www/html/setup/ /var/www/html/examples/ phpinfo.php
