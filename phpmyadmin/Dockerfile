@@ -10,9 +10,9 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install mbstring
 
 # Fetch phpMyAdmin
-ENV PMA_VERSION 4.3.12
+ENV PMA_VERSION 4.5.0.2
 
-RUN curl -LS "http://sourceforge.net/projects/phpmyadmin/files/phpMyAdmin/$PMA_VERSION/phpMyAdmin-$PMA_VERSION-english.tar.gz" -o pma.tar.gz \
+RUN curl -LS "https://files.phpmyadmin.net/phpMyAdmin/$PMA_VERSION/phpMyAdmin-$PMA_VERSION-english.tar.gz" -o pma.tar.gz \
 	&& tar xzf pma.tar.gz -C /var/www/html --strip-components=1 \
 	&& rm pma.tar.gz
 
