@@ -6,7 +6,8 @@ FROM debian:jessie
 MAINTAINER Rick Wieman <git@rickw.nl>
 
 # Install exim and xtail (for logs)
-RUN apt-get update && apt-get install -y exim4 xtail
+RUN apt-get update && apt-get install -y exim4 xtail \
+    && rm -r /var/lib/apt/lists/*
 
 # Add our configuration
 RUN rm -rf /etc/exim4 && mkdir -p /etc/exim4

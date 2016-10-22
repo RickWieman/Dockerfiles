@@ -18,4 +18,4 @@ Exim 4 specifically configured to act as an outgoing SMTP service. Based on Debi
 
 ## Thanks
 
-This Docker container is based on miracle2k's exim-sender ([GitHub](https://github.com/miracle2k/dockerfiles/blob/master/exim-sender/) or [Docker Hub](https://registry.hub.docker.com/u/elsdoerfer/exim-sender/).
+This Docker container is based on miracle2k's exim-sender ([GitHub](https://github.com/miracle2k/dockerfiles/blob/master/exim-sender/) or [Docker Hub](https://registry.hub.docker.com/u/elsdoerfer/exim-sender/)).
