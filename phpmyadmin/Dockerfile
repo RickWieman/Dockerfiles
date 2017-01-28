@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y libpng12-dev libjpeg-dev && rm -rf /var
 	&& docker-php-ext-install mbstring
 
 # Fetch phpMyAdmin
-ENV PMA_VERSION 4.6.5.2
+ENV PMA_VERSION 4.6.6
 
 RUN curl -LS "https://files.phpmyadmin.net/phpMyAdmin/$PMA_VERSION/phpMyAdmin-$PMA_VERSION-english.tar.gz" -o pma.tar.gz \
 	&& tar xzf pma.tar.gz -C /var/www/html --strip-components=1 \
